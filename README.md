@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<h1>WeSwap - Borrow and Lend Products</h1>
+<h1>Borrow and Lend Products</h1>
 
 <p>WeSwap is a platform that allows users to list their products for borrowing. Users can act as both lenders and borrowers, and interaction between users is facilitated via a real-time chat session. </p>
 
