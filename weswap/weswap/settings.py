@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    'user_authorization',
+    "user_authorization",
 ]
 
 MIDDLEWARE = [
@@ -80,7 +80,7 @@ DATABASES = {'default': {
     'USER': 'postgres',
     'PASSWORD': 'N sskr@PG',
     'HOST': 'localhost',
-    'PORT': '5432',
+    'PORT': '5433',
 }}
 
 
