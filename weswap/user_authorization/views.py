@@ -6,8 +6,10 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from django.contrib import messages
 
+
 def home(request):
     return render(request, 'user_authorization/home.html')
+
 
 def login_view(request):
     if request.method == 'POST':
@@ -20,6 +22,7 @@ def login_view(request):
         else:
             messages.error(request, 'Invalid credentials')
     return render(request, 'user_authorization/login.html')
+
 
 def signup_view(request):
     if request.method == 'POST':
