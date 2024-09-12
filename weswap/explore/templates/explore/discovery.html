@@ -1,0 +1,24 @@
+<!-- explore/templates/explore/discovery.html -->
+
+{% extends 'includes/header_footer.html' %}
+
+{% load static %}
+
+{% block content %}
+    <main>
+        <h2>Discover Products in {{ subcategory }}</h2>
+        <div class="category-grid">
+            {% for product in products %}
+                <div class="category-item">
+                    {% if product.image %}
+                        <img src="{% static product.image.url %}" alt="{{ product.product_name }}">
+                    {% else %}
+                        <img src="{% static 'images/placeholder.png' %}" alt="Placeholder Image">
+                    {% endif %}
+                    <h3><a href="{% url 'product_detail' product.id %}">{{ product.product_name }}</a></h3>
+                    <p>{{ product.description }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </main>
+{% endblock content %}

@@ -1,0 +1,33 @@
+<!-- explore/templates/includes/header_footer.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeSwap</title>
+
+    <link rel="stylesheet" href="{% static 'explore/css/style.css' %}"><!-- Add any CSS styling here -->
+
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+             <h1><a href="{% url 'home' %}">WeSwap</a></h1>
+            <div class="auth-links">
+                <a href="{% url 'login' %}">Login</a> | <a href="{% url 'signup' %}">Sign Up</a>
+            </div>
+        </div>
+    </header>
+
+    {% block content %}
+    <!-- Content will go here in the child templates -->
+    {% endblock content %}
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 WeSwap. All rights reserved.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!-- explore/templates/explore/product_detail.html -->
+
+{% extends 'includes/header_footer.html' %}
+
+{% load static %}
+
+{% block content %}
+    <main>
+        <div class="product-detail">
+            <h2>{{ product.product_name }}</h2>
+            {% if product.image %}
+                <img src="{% static product.image.url %}" alt="{{ product.product_name }}">
+            {% else %}
+                <img src="{% static 'images/placeholder.png' %}" alt="Placeholder Image">
+            {% endif %}
+            <p><strong>Category:</strong> {{ product.category }}</p>
+            <p><strong>Sub-Category:</strong> {{ product.sub_category }}</p>
+            <p><strong>Description:</strong> {{ product.description }}</p>
+            <p><strong>Condition:</strong> {{ product.product_condition }}</p>
+            <p><strong>Age:</strong> {{ product.product_age }} months</p>
+            <p><strong>Size:</strong> {{ product.size }}</p>
+            <p><strong>Color:</strong> {{ product.color }}</p>
+            <p><strong>Price:</strong> {{ product.price }}</p>
+        </div>
+    </main>
+{% endblock content %}
