@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>WeSwap Home</title>
-</head>
-<body>
-    <h1>Welcome to WeSwap</h1>
+{% extends "user_authorization/base.html" %}
+{% block content %}
+<h1>Welcome to WeSwap</h1>
     <a href="{% url 'login' %}"><button>Login</button></a>
     <a href="{% url 'signup' %}"><button>Signup</button></a>
-</body>
-</html>
+{% endblock content %}

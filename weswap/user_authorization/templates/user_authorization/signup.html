@@ -1,26 +1,52 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Signup</title>
-</head>
-<body>
-    <h1>Signup</h1>
-    <form method="post">
-        {% csrf_token %}
-        <label for="username">Username:</label>
-        <input type="text" name="username" required><br>
-        <label for="email">Email:</label>
-        <input type="email" name="email" required><br>
-        <label for="password">Password:</label>
-        <input type="password" name="password" required><br>
-        <label for="gender">Gender:</label>
-        <input type="text" name="gender" required><br>
-        <label for="department">Department:</label>
-        <input type="text" name="department" required><br>
-        <label for="current_year">Current Year in B.Tech:</label>
-        <input type="number" name="current_year" required><br>
-        <button type="submit">Signup</button>
+{% extends "user_authorization/base.html" %}
+
+{% block content %}
+<div class="shadow-wrap">
+  <div class="form-wrap">
+    <h3>Signup</h3>
+    <form method="POST">
+      {% csrf_token %}
+      <label for="username">Username:</label>
+      <input type="text" name="username" required><br>
+
+      <label for="email">Email:</label>
+      <input type="email" name="email" required><br>
+
+      <label for="password">Password:</label>
+      <input type="password" name="password" required><br>
+
+      <div class="side-by-side">
+        <div class="form-group">
+          <label for="gender">Gender:</label>
+          <select name="gender" required>
+            <option value="" disabled selected>Select your gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="department">Department:</label>
+          <select name="department" required>
+            <option value="" disabled selected>Select your department</option>
+            <option value="ai&ds">AI & DS</option>
+            <option value="bio-tech">Bio-Tech</option>
+            <option value="cse">CSE</option>
+            <option value="cs&it">CS & IT</option>
+            <option value="mech">Mechanical</option>
+            <option value="civil">Civil</option>
+          </select>
+        </div>
+      </div>
+
+      <label for="current_year">Current Year in B.Tech:</label>
+      <input type="number" name="current_year" required><br>
+
+      <button type="submit">Signup</button>
     </form>
-    <p>You know us before? <a href="{% url 'login' %}">Login here</a></p>
-</body>
-</html>
+
+    <p>You know us before? <a class="signup-link" href="{% url 'login' %}">Login here</a></p>
+  </div>
+</div>
+{% endblock content %}
