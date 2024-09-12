@@ -77,11 +77,11 @@ WSGI_APPLICATION = "weswap.wsgi.application"
 
 DATABASES = {'default': {
     'ENGINE': 'django.db.backends.postgresql',
-    'NAME': 'weswapDB',
+    'NAME': 'weswapdb',
     'USER': 'postgres',
-    'PASSWORD': '1234',
+    'PASSWORD': 'N sskr@PG',
     'HOST': 'localhost',
-    'PORT': '5432',
+    'PORT': '5433',
 }}
 
 

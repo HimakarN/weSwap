@@ -112,7 +112,8 @@ def password_reset(request):
                 else:
                     return JsonResponse({'success': False, 'message': 'Unable to send OTP.'})
             else:
-                return render(request, 'user_authorization/password_reset.html', {'error': True})
+                messages.error(request, 'Invalid credentials')
+                return JsonResponse({'error': True, 'message': 'enter valid email!'})
 
         elif action == 'verify_otp':
             otp = data.get('otp')
