@@ -77,7 +77,7 @@ WSGI_APPLICATION = "weswap.wsgi.application"
 
 DATABASES = {'default': {
     'ENGINE': 'django.db.backends.postgresql',
-    'NAME': 'weswapdb',
+    'NAME': 'weswapDB',
     'USER': 'postgres',
     'PASSWORD': '1234',
     'HOST': 'localhost',
@@ -122,9 +122,7 @@ USE_TZ = True
 # settings.py
 import os
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),
-                    BASE_DIR  / "static",
-                    ]  # Add this line if you're serving static files from multiple apps
+# Add this line if you're serving static files from multiple apps
 
 
 # Default primary key field type

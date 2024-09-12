@@ -9,8 +9,9 @@
         <div class="category-grid">
             {% for subcategory in subcategories %}
                 <div class="category-item">
-                    <h3>{{ subcategory }}</h3>
-                    <!-- You can add more details or a link to further explore this subcategory -->
+                    <a href="{% url 'discovery' %}?subcategory={{ subcategory }}" class="subcategory-link">
+                        <h3>{{ subcategory }}</h3>
+                    </a>
                 </div>
             {% endfor %}
         </div>
