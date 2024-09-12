@@ -1,0 +1,18 @@
+<!-- explore/templates/explore/subcategories.html -->
+
+{% extends 'includes/header_footer.html' %}
+
+{% block content %}
+    <!-- Main Content for Subcategories -->
+    <main>
+        <h2>Subcategories for {{ category }}</h2>
+        <div class="category-grid">
+            {% for subcategory in subcategories %}
+                <div class="category-item">
+                    <h3>{{ subcategory }}</h3>
+                    <!-- You can add more details or a link to further explore this subcategory -->
+                </div>
+            {% endfor %}
+        </div>
+    </main>
+{% endblock content %}

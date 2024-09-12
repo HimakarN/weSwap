@@ -1,0 +1,18 @@
+<!-- explore/templates/explore/base.html -->
+
+{% extends 'includes/header_footer.html' %}
+
+{% block content %}
+    <!-- Main Content for Categories -->
+    <main>
+        <h2>Categories</h2>
+        <div class="category-grid">
+            {% for category in categories %}
+                <div class="category-item">
+                    <h3><a href="{% url 'subcategories' category=category %}">{{ category }}</a></h3>
+                    <!-- Add image or any further customization -->
+                </div>
+            {% endfor %}
+        </div>
+    </main>
+{% endblock content %}
