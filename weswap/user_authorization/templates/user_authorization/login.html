@@ -1,4 +1,6 @@
 {% extends "user_authorization/base.html" %}
+{% load static %}
+
 {% block content %}
 <div class="shadow-wrap">
  <div class="form-wrap">
@@ -12,38 +14,18 @@
                 {% endfor %}
             </div>
         {% endif %}
-<form method="POST">
- {% csrf_token %}
-        <label for="username">Username or Email:</label>
-        <input type="text" name="user|email" required><br>
-        <label for="password">Password:</label>
-        <input type="password" name="password" required class="{% if error %}shake{% endif %}"><br>
- <button type="submit">Submit</button>
-</form>
-    <a class="signup-link" href="{% url 'signup' %}">Signup</a>
-    <a class="signup-link" href="{% url 'password_reset' %}">Reset Password Here</a>
-</div>
+  <form method="POST" id="loginForm" data-error="{{ error|default:'false' }}">
+   {% csrf_token %}
+          <label for="username">Username or Email:</label>
+          <input type="text" name="user|email" required><br>
+          <label for="password">Password:</label>
+          <input type="password" name="password" id="password" required><br>
+   <button type="submit">Submit</button>
+  </form>
+      <a class="signup-link" href="{% url 'signup' %}">Signup</a>
+      <a class="signup-link" href="{% url 'password_reset' %}">Reset Password Here</a>
+ </div>
 </div>
 
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        if ({{ error|default:"false" }}) {
-            const passwordField = document.getElementById('password');
-            passwordField.classList.add('shake');  // Add the shake animation class
-            passwordField.value = '';  // Clear the password field
-        }
-    });
-
-    var messages = document.querySelector('.messages');
-    if (messages) {
-        // Remove messages after 5 seconds
-        setTimeout(function() {
-            messages.style.transition = "opacity 0.5s ease";
-            messages.style.opacity = 0;
-            setTimeout(function() {
-                messages.remove();
-            }, 500);
-        }, 3000);
-    }
-</script>
+<script src="{% static 'user_authorization/js/login.js' %}"></script>
 {% endblock content %}
