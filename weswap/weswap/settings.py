@@ -79,9 +79,9 @@ DATABASES = {'default': {
     'ENGINE': 'django.db.backends.postgresql',
     'NAME': 'weswapdb',
     'USER': 'postgres',
-    'PASSWORD': 'N sskr@PG',
+    'PASSWORD': '1234',
     'HOST': 'localhost',
-    'PORT': '5433',
+    'PORT': '5432',
 }}
 
 
@@ -129,8 +129,8 @@ USE_TZ = True
 import os
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
-#MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_ROOT =  r"C:\Users\nhima\Desktop\WeSwapImages"
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+#MEDIA_ROOT =  r"C:\Users\nhima\Desktop\WeSwapImages"
 # Add this line if you're serving static files from multiple apps
 
 
