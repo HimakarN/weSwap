@@ -1,21 +1,26 @@
-
 # explore/models.py
 
 from django.db import models
-#from user_authorization.models import User  # Import the User model
 
+# Product model
 class Product(models.Model):
-    #user_id = models.ForeignKey(User, on_delete=models.CASCADE)  # Foreign key to User model
-    product_id = models.IntegerField(unique="True")
+    product_id = models.AutoField(primary_key=True)  # Automatically assigns a unique product_id starting from 1
     product_name = models.CharField(max_length=255)
     category = models.CharField(max_length=255)
     sub_category = models.CharField(max_length=255)
     description = models.TextField()
-    image = models.ImageField(upload_to='product_images/', blank=True, null=True)  # For storing product images
-    product_condition = models.CharField(max_length=50)  # e.g., 'New', 'Used'
+    product_condition = models.CharField(max_length=50)
     product_age = models.IntegerField(help_text='Product age in months or years')
-    size = models.CharField(max_length=50)
-    color = models.CharField(max_length=50)
+    product_size = models.CharField(max_length=50)
+    product_color = models.CharField(max_length=50)
 
     def __str__(self):
         return self.product_name
+
+# ProductImage model for storing multiple images for each product
+class ProductImage(models.Model):
+    product = models.ForeignKey(Product, to_field='product_id', on_delete=models.CASCADE)  # Foreign key to Product
+    image = models.ImageField(upload_to='product_images/',blank=True, null=True)  # Path to store product images
+
+    def __str__(self):
+        return f"Image for {self.product.product_name}"

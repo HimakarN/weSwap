@@ -8,17 +8,21 @@
     <main>
         <h2>Discover Products in {{ subcategory }}</h2>
         <div class="category-grid">
-            {% for product in products %}
+            {% for item in products_with_images %}
                 <div class="category-item">
-                    {% if product.image %}
-                        <img src="{% static product.image.url %}" alt="{{ product.product_name }}">
+                    <!-- Show the first image if available, else display a placeholder -->
+                    {% if item.image %}
+                        <img src="{{ item.image }}" alt="{{ item.product.product_name }}">
                     {% else %}
                         <img src="{% static 'images/placeholder.png' %}" alt="Placeholder Image">
                     {% endif %}
-                    <h3><a href="{% url 'product_detail' product.id %}">{{ product.product_name }}</a></h3>
-                    <p>{{ product.description }}</p>
+
+                    <!-- Product Name with link to detail view -->
+                        <h3><a href="{% url 'product_detail' item.product.product_id %}">{{ item.product.product_name }}</a></h3>
+                        <p>{{ item.product.description }}</p>
                 </div>
             {% endfor %}
+
         </div>
     </main>
 {% endblock content %}

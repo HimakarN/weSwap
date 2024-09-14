@@ -8,11 +8,14 @@
     <main>
         <div class="product-detail">
             <h2>{{ product.product_name }}</h2>
-            {% if product.image %}
-                <img src="{% static product.image.url %}" alt="{{ product.product_name }}">
-            {% else %}
-                <img src="{% static 'images/placeholder.png' %}" alt="Placeholder Image">
-            {% endif %}
+
+            <!-- Display all images related to the product -->
+            <div class="product-images">
+                {% for image in product_images %}
+                    <img src="{{ image.image.url }}" alt="{{ product.product_name }}">
+                {% endfor %}
+            </div>
+
             <p><strong>Category:</strong> {{ product.category }}</p>
             <p><strong>Sub-Category:</strong> {{ product.sub_category }}</p>
             <p><strong>Description:</strong> {{ product.description }}</p>
