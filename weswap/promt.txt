@@ -1,0 +1,50 @@
+Our project is weswap which we are building with django Framework
+Upto now we created 2 apps names user_authorization and explore
+- user_authorization
+        for user account registration and verification
+       model.py
+       class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    gender = models.CharField(max_length=10)
+    department = models.CharField(max_length=100)
+    current_year = models.IntegerField()
+
+    def __str__(self):
+        return self.user.username
+
+
+- explore
+        E-commerce website like interface to explore for products in various categories and sub-categories
+        model.py
+        # explore/models.py
+
+from django.db import models
+
+# Product model
+class Product(models.Model):
+    product_id = models.AutoField(primary_key=True)  # Automatically assigns a unique product_id starting from 1
+    product_name = models.CharField(max_length=255)
+    category = models.CharField(max_length=255)
+    sub_category = models.CharField(max_length=255)
+    description = models.TextField()
+    product_condition = models.CharField(max_length=50)
+    product_age = models.IntegerField(help_text='Product age in months or years')
+    product_size = models.CharField(max_length=50)
+    product_color = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.product_name
+
+# ProductImage model for storing multiple images for each product
+class ProductImage(models.Model):
+    product = models.ForeignKey(Product, to_field='product_id', on_delete=models.CASCADE)  # Foreign key to Product
+    image = models.ImageField(upload_to='product_images/',blank=True, null=True)  # Path to store product images
+
+    def __str__(self):
+        return f"Image for {self.product.product_name}"
+
+
+******** Now i want build a page in dashboard app so that user can list their products
+        -> create a listing.html that should accept user inputs regarding that product as in above mentioned explore model
+        -> note: it should be capable a taking multpile images as input
+        -> the taken input is stored into Product and ProductImage tables
