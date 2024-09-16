@@ -1,17 +1,15 @@
-# Create your views here.
-import json
+from django.contrib.auth import authenticate, login
+from django.shortcuts import render, redirect
+from django.contrib.auth.models import User
+from django.core.mail import send_mail
+from django.http import JsonResponse
+from django.contrib import messages
+from django.conf import settings
+from .models import Profile
 import random
+import json
 import re
 
-from django.http import JsonResponse
-from django.views.decorators.http import require_POST
-from django.conf import settings
-from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
-from django.contrib.auth.models import User
-from django.contrib import messages
-from django.core.mail import send_mail
-from .models import Profile
 
 
 def home(request):
@@ -36,6 +34,7 @@ def login_view(request):
                 return render(request, 'user_authorization/login.html', {'error': True})
         else:
             user = authenticate(request, username=user_email, password=password)
+
         if user is not None:
             login(request, user)
             return redirect('home')
@@ -53,14 +52,14 @@ Congratulations and welcome to WeSwap!
 
 We’re excited to have you on board. Your registration has been successfully completed, and you are now part of the WeSwap community. Here’s a quick overview of what you can do next:
 
-1. **Explore and List Products:** Start by browsing the available products or list your own items for borrowing.
-2. **Manage Your Account:** Visit your profile to update your details, set preferences, and manage your listings.
-3. **Start Swapping:** Connect with other users and start exchanging products effortlessly!
+1. Explore and List Products: Start by browsing the available products or list your own items for borrowing.
+2. Manage Your Account: Visit your profile to update your details, set preferences, and manage your listings.
+3. Start Swapping: Connect with other users and start exchanging products effortlessly!
 
 Your Account Details:
 
-- **Username:** {user.username}
-- **Email:** {user.email}
+- Username: {user.username}
+- Email: {user.email}
 
 Need Help? If you have any questions or need assistance, feel free to reach out to our support team at support@weswap.com or visit our Help Center.
 

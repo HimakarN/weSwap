@@ -1,8 +1,8 @@
 <!-- explore/templates/header_footer.html -->
-{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WeSwap</title>
@@ -17,7 +17,6 @@
                 {% if user.is_authenticated %}
                     <!-- Show Profile and Sign Out for authenticated users -->
                     <a href="{% url 'profile' %}">Profile</a> |
-
                         <form method="post" action="{% url 'logout' %}">
                             {% csrf_token %}
                             <button type="submit">Logout</button>

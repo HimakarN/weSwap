@@ -14,19 +14,27 @@ header {
 }
 
 .auth-links {
+    display: flex;
+    align-items:center;
     position: absolute;
     top: 10px;
-    right: 20px;
+    right: 15px;
 }
 
-.auth-links a {
+.auth-links a, .auth-links button {
+    display: inline-block;
     color: white;
-    margin-left: 10px;
+    font-size: 16px;
+    margin-right: 5px;
     text-decoration: none;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
 }
 
-.auth-links a:hover {
+.auth-links a:hover, .auth-links button:hover {
     text-decoration: underline;
+    color: #0000EE;
 }
 
 main {
