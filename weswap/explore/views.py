@@ -3,6 +3,8 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Product, ProductImage
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout
+from django.shortcuts import redirect
 
 
 def home(request):
@@ -52,3 +54,8 @@ def product_detail(request, product_id):
 def profile(request):
     # You can customize what you'd like to display on the profile page.
     return render(request, 'explore/profile.html')
+
+'''def logout_view(request):
+    logout(request)  # Log out the user
+    return redirect('home')  # Redirect to the home page
+'''

@@ -17,7 +17,11 @@
                 {% if user.is_authenticated %}
                     <!-- Show Profile and Sign Out for authenticated users -->
                     <a href="{% url 'profile' %}">Profile</a> |
-                    <a href="{% url 'logout' %}">Log Out</a>
+
+                        <form method="post" action="{% url 'logout' %}">
+                            {% csrf_token %}
+                            <button type="submit">Logout</button>
+                        </form>
                 {% else %}
                     <!-- Show Login and Sign Up for guests -->
                     <a href="{% url 'login' %}">Login </a>  |
