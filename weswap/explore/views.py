@@ -2,6 +2,7 @@
 
 from django.shortcuts import render, get_object_or_404
 from .models import Product, ProductImage
+from django.contrib.auth.decorators import login_required
 
 
 def home(request):
@@ -45,3 +46,9 @@ def product_detail(request, product_id):
         'product': product,
         'product_images': product_images
     })
+
+
+@login_required
+def profile(request):
+    # You can customize what you'd like to display on the profile page.
+    return render(request, 'explore/profile.html')

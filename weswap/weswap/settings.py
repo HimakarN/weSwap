@@ -110,6 +110,11 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'help.weswap@gmail.com'  # Replace with your email
 EMAIL_HOST_PASSWORD = 'ejdv hant naim bxum'  # Replace with your email password
 
+# User authentication validators
+LOGIN_REDIRECT_URL = 'home'  # After login, redirect to home page
+LOGOUT_REDIRECT_URL = 'home'  # After logout, redirect to home page
+
+
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
@@ -125,7 +130,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-# settings.py
+
 import os
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
