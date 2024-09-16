@@ -13,7 +13,7 @@ import random
 import json
 import re
 
-from .templates.user_authorization.decorators import otp_verified_required
+from weswap.user_authorization.decorators import otp_verified_required
 
 
 def home(request):
