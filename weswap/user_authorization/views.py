@@ -1,15 +1,19 @@
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, password_validation
+from django.core.exceptions import ValidationError
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.core.mail import send_mail
 from django.http import JsonResponse
 from django.contrib import messages
 from django.conf import settings
+from django.urls import reverse
+
 from .models import Profile
 import random
 import json
 import re
 
+from .templates.user_authorization.decorators import otp_verified_required
 
 
 def home(request):
@@ -25,7 +29,6 @@ def login_view(request):
         user_email = request.POST['user|email']
         password = request.POST['password']
         if re.match(r"[^@]+@[^@]+\.[^@]+", user_email) is not None:
-            print('email entered')
             try:
                 user = User.objects.get(email=user_email)
                 user = authenticate(request, username=user.username, password=password)
@@ -118,7 +121,10 @@ def password_reset(request):
             otp = data.get('otp')
             user_otp = request.session.get('otp')
             if otp == user_otp:
-                return JsonResponse({'success': True, 'message': 'OTP verified!'})
+                request.session['otp_verified'] = True
+                request.session['reset_email'] = email  # Store email in session
+                change_password_url = reverse('change_password')
+                return JsonResponse({'success': True, 'message': 'OTP verified!', 'redirect': change_password_url})
             else:
                 return JsonResponse({'success': False, 'message': 'Invalid OTP.'})
 
@@ -131,9 +137,38 @@ def password_reset(request):
                 else:
                     return JsonResponse({'success': False, 'message': 'Unable to send OTP.'})
             else:
-                return render(request, 'user_authorization/password_reset.html', {'error': True})
+                return JsonResponse({'error': True, 'message': 'Invalid credentials'})
     else:
         return render(request, 'user_authorization/password_reset.html')
+
+
+@otp_verified_required
+def change_password(request):
+    email = request.session.get('reset_email')
+    user = User.objects.get(email=email)
+    if not email:
+        return redirect('password_reset')
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        new_pass = data.get('new_password')
+        verify_pass = data.get('verify_password')
+        try:
+            # Validate the password
+            password_validation.validate_password(new_pass, user)
+        except ValidationError as e:
+            # If the password doesn't meet the validation criteria, return the error messages
+            return JsonResponse({'success': False, 'message': ' '.join(e.messages)})
+
+        if new_pass == verify_pass:
+            try:
+                user = User.objects.get(email=email)
+                user.set_password(new_pass)
+                user.save()  # Save the user object to persist changes
+                return JsonResponse(
+                    {'success': True, 'message': 'Password changed successfully', 'redirect': reverse('login')})
+            except User.DoesNotExist:
+                return JsonResponse({'success': False, 'message': 'Failed to change password'})
+    return render(request, 'user_authorization/change_password.html')
 
 
 def generate_otp():
@@ -167,4 +202,3 @@ def send_otp(user_otp, email, request):
         """
     from_email = settings.EMAIL_HOST_USER
     return send_mail(subject, message, from_email, [email])
-

@@ -14,12 +14,12 @@
                 {% endfor %}
             </div>
         {% endif %}
-  <form method="POST" id="loginForm" data-error="{{ error|default:'false' }}">
+  <form method="POST" id="loginForm">
    {% csrf_token %}
           <label for="username">Username or Email:</label>
           <input type="text" name="user|email" required><br>
           <label for="password">Password:</label>
-          <input type="password" name="password" id="password" required><br>
+          <input type="password" name="password" id="password" required class="{% if error %}shake{% endif %}"><br>
    <button type="submit">Submit</button>
   </form>
       <a class="signup-link" href="{% url 'signup' %}">Signup</a>
