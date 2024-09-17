@@ -50,11 +50,6 @@ body {
   border-radius: 8px;
 }
 
-.form-group {
-  margin-bottom: 5px;
-  position: relative;
-}
-
 /* Typography */
 h3, h2 {
   text-align: center;
@@ -85,6 +80,16 @@ input, select {
   display: flex;
   justify-content: space-between;
   margin-bottom: 15px;
+}
+
+.form-group {
+  margin-bottom: 5px;
+  justify-content: space-between;
+  position: relative;
+}
+
+.side-by-side .form-group {
+  flex-basis: 48%;
 }
 
 .verify-by-side {
