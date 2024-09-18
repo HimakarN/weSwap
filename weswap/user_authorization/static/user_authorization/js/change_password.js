@@ -48,6 +48,6 @@ savebtn.addEventListener('click', function(e) {
     })
     .catch(error => {
         console.error('Error:', error);
-        showMessage(messageDiv, "An error occurred. Please try again.");
+        showMessage(messageDiv, "An error occurred. Please try again.", true);
     });
 });
