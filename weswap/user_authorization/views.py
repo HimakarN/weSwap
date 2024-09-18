@@ -1,6 +1,4 @@
 from django.contrib.auth import authenticate, login, password_validation
-from django.db.models import Q
-
 from .otp import signup_otp, send_otp, after_signup
 from django.core.exceptions import ValidationError
 from .decorators import otp_verified_required
@@ -9,6 +7,7 @@ from django.contrib.auth.models import User
 from django.http import JsonResponse
 from django.contrib import messages
 from django.urls import reverse
+from django.db.models import Q
 import json
 import re
 
@@ -79,7 +78,7 @@ def signup_view(request):
                 return JsonResponse({'success': False, 'message': 'Username already in use'})
             else:
                 user = User.objects.create_user(username=data.get('username'), email=data.get('email'),
-                                                password=data.get('password'))
+                                                 password=data.get('password'))
                 recipient_list = [data.get('email')]
                 after_signup(user, data.get('gender'), data.get('department'), data.get('current_year'), recipient_list)
                 return JsonResponse(
