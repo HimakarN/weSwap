@@ -1,7 +1,7 @@
 # explore/models.py
 
 from django.db import models
-
+from django.utils import timezone
 # Product model
 class Product(models.Model):
     product_id = models.AutoField(primary_key=True)  # Automatically assigns a unique product_id starting from 1
@@ -13,6 +13,7 @@ class Product(models.Model):
     product_age = models.IntegerField(help_text='Product age in months or years')
     product_size = models.CharField(max_length=50)
     product_color = models.CharField(max_length=50)
+    created_at = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return self.product_name

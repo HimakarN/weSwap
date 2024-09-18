@@ -3,13 +3,35 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Product, ProductImage
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import logout
-from django.shortcuts import redirect
+# explore/views.py
+
+
+from django.utils import timezone
+from datetime import timedelta
+
+from django.shortcuts import render
+from .models import Product, ProductImage
+
+from explore.models import Product, ProductImage
 
 
 def home(request):
     categories = Product.objects.values_list('category', flat=True).distinct()
-    return render(request, 'explore/base.html', {'categories': categories})
+    featured_products = Product.objects.order_by('-created_at')[:5]  # Customize this query for featured products
+    new_products = Product.objects.order_by('-created_at')[:5]
+
+    return render(request, 'explore/base.html', {
+        'categories': categories,
+        'featured_products': featured_products,
+        'new_products': new_products
+    })
+
+
+from django.contrib.auth import logout
+from django.shortcuts import redirect
+
+
+
 
 
 def subcategories(request, category):
