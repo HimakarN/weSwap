@@ -15,6 +15,25 @@ body {
   background-color: #fff;
 }
 
+.verify-box-btn{
+    color: green;
+    background-color: transparent;
+    width: auto;
+    margin-top: 0;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: 700;
+    margin-top: 15px;
+}
+
+.verify-box-btn:hover {
+  background-color: white;
+  color: #10185F;
+  border: 1px solid #10185F;
+}
+
 /* Form Container Styles */
 .shadow-wrap {
   border-radius: 8px;
@@ -29,11 +48,6 @@ body {
   background-color: #fff;
   padding: 25px;
   border-radius: 8px;
-}
-
-.form-group {
-  margin-bottom: 5px;
-  position: relative;
 }
 
 /* Typography */
@@ -54,7 +68,7 @@ label {
 input, select {
   width: 100%;
   padding: 10px;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   font-size: 14px;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -68,8 +82,40 @@ input, select {
   margin-bottom: 15px;
 }
 
+.form-group {
+  margin-bottom: 5px;
+  justify-content: space-between;
+  position: relative;
+}
+
 .side-by-side .form-group {
   flex-basis: 48%;
+}
+
+.verify-by-side {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.verify-by-side .verify-group1 {
+  flex-basis: 68%;
+}
+
+.verify-by-side .verify-group2 {
+justify-content: center;
+  flex-basis: 28%;
+}
+
+.verify-by-side .verify-group2 button{
+    color: #10182F;
+    background-color: transparent;
+    margin-top: 25%;
+}
+
+.verify-by-side .verify-group2 button:hover{
+    background-color: transparent;
+    margin-top: 25%;
 }
 
 /* Button Styles */
@@ -128,9 +174,9 @@ input, select {
 /* Animation */
 @keyframes shake {
   0% { transform: translateX(0); }
-  25% { transform: translateX(-7px); }
-  50% { transform: translateX(7px); }
-  75% { transform: translateX(-7px); }
+  25% { transform: translateX(-10px); }
+  50% { transform: translateX(10px); }
+  75% { transform: translateX(-10px); }
   100% { transform: translateX(0); }
 }
 

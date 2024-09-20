@@ -4,6 +4,7 @@
 
 {% block content %}
     <!-- Main Content for Categories -->
+
     <main>
         <h2>Categories</h2>
         <div class="category-grid">
@@ -14,5 +15,41 @@
                 </div>
             {% endfor %}
         </div>
+
+        <!-- Slideshow for Featured Products -->
+        <h1> Slide Show </h1>
+        <section class="slideshow">
+            <div class="slideshow-container">
+                {% for product in featured_products %}
+                    <div class="slide">
+                        <a href="{% url 'product_detail' product_id=product.product_id %}">
+                            <img src="{{ product.productimage_set.first.image.url }}" alt="{{ product.product_name }}">
+                        </a>
+                        <div class="slide-caption">{{ product.product_name }}</div>
+                    </div>
+                {% endfor %}
+            </div>
+            <!-- Add controls for the slideshow -->
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        </section>
+
+        <!-- Banner for Newly Launched Products -->
+        <section class="new-products-banner">
+            <h2>Newly Launched Products</h2>
+            <div class="banner-grid">
+                {% for product in new_products %}
+                    <div class="banner-item">
+                        <h3>{{ product.product_name }}</h3>
+                        <a href="{% url 'product_detail' product_id=product.product_id %}">
+                            {% if product.productimage_set.exists %}
+                                <img src="{{ product.productimage_set.first.image.url }}" alt="{{ product.product_name }}">
+                            {% endif %}
+                        </a>
+                        <p>{{ product.description }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
     </main>
 {% endblock content %}
