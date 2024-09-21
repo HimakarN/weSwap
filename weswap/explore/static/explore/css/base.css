@@ -1,6 +1,4 @@
-
     /* Slide Show */
-
     /*
     *,
     *::before,
@@ -14,17 +12,15 @@
     */
     body {
         min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: 0  px;
-        background-image:  #f4f4f4;
+        display: block;
+        padding: 0px;
         font-family: Tahoma, sans-serif;
     }
 
     .slider-wrapper {
+        display: grid;
         position: relative;
+        justify-content: center;
     }
 
     .slider {
@@ -36,14 +32,13 @@
         scroll-snap-type: x mandatory;
         max-width: var(--slide-width);
         border: 5px solid #fff;
-        box-shadow: 0 2px 15px rgba(#000, 0.2), 0 2px 20px rgba(#000, 0.25);
         overflow-y: hidden;
         overflow-x: auto;
         scroll-behavior: smooth;
         -ms-overflow-style: none;
         scrollbar-width: none;
         border-radius:1.5rem;
-
+        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2), 0 2px 20px rgba(0, 0, 0, 0.25);
         &::-webkit-scrollbar {
             display: none;
         }
@@ -83,10 +78,6 @@
             opacity: 1;
         }
        }
-
-
-
-
 
     .caption {
         display: block;

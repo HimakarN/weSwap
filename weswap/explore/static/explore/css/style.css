@@ -1,7 +1,7 @@
 /* Global Styles */
 body {
+    display: block;
     font-family: Tahoma, sans-serif;
-    margin: 10px 10px 20px 10px;
     padding: 0px;
     background-color: #f4f4f4;
 }
