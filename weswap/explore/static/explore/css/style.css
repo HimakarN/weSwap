@@ -1,14 +1,14 @@
 /* Global Styles */
 body {
-    font-family: Arial, sans-serif;
-    margin: 10px 10px 30px 10px;
-    padding: 0;
+    font-family: Tahoma, sans-serif;
+    margin: 10px 10px 20px 10px;
+    padding: 0px;
     background-color: #f4f4f4;
 }
 
 header {
     background-color: #4CAF50;
-    color: white;
+    color: green;
     padding: 10px 0;
     text-align: center;
 }
@@ -102,66 +102,4 @@ footer {
     width: 100%;
 }
 
-/* CSS for slideshow */
-.slideshow {
-    position: relative;
-    width: 100%;
-    height: auto;
-    overflow: hidden;
-    margin-bottom: 20px; /* Space between slideshow and other content */
-}
 
-.slides-container {
-    display: flex;
-    animation: slide 20s infinite;
-}
-
-.slide {
-    min-width: 100%;
-    transition: 0.5s;
-}
-
-.slide img {
-    width: 100%;
-    height: auto;
-}
-
-@keyframes slide {
-    0% { transform: translateX(0); }
-    20% { transform: translateX(0); }
-    25% { transform: translateX(-100%); }
-    45% { transform: translateX(-100%); }
-    50% { transform: translateX(-200%); }
-    70% { transform: translateX(-200%); }
-    75% { transform: translateX(-300%); }
-    95% { transform: translateX(-300%); }
-    100% { transform: translateX(0); }
-}
-
-/* Newly Launched Products */
-.new-products-banner {
-    padding: 20px;
-    background-color: #f9f9f9;
-}
-
-.product-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    justify-content: space-around;
-}
-
-.product-item {
-    width: 30%;
-    text-align: center;
-    background: #fff;
-    padding: 15px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-}
-
-.product-item img {
-    width: 100%;
-    height: 200px; /* Fixed height for images in grid */
-    object-fit: cover;
-}

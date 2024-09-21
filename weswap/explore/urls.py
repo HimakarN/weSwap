@@ -7,7 +7,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    # path('', lambda request: redirect('home')),  # Redirect root URL to /home/
+    #path('', lambda request: redirect('home')),  # Redirect root URL to /home/
     path('', views.home, name='home'),  # Home page
     path('category/<str:category>/', views.subcategories, name='subcategories'),
     path('discovery/', views.discovery, name='discovery'),

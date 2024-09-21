@@ -79,9 +79,9 @@ DATABASES = {'default': {
     'ENGINE': 'django.db.backends.postgresql',
     'NAME': 'weswapdb',
     'USER': 'postgres',
-    'PASSWORD': 'N sskr@PG',
+    'PASSWORD': '1234',
     'HOST': 'localhost',
-    'PORT': '5433',
+    'PORT': '5432',
 }}
 
 
@@ -129,6 +129,13 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
+
+#directory to static files
+
+STATICFILES_DIRS = [
+    BASE_DIR / 'explore/static',
+]
+
 
 
 import os
