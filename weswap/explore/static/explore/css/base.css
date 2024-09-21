@@ -28,8 +28,8 @@
     }
 
     .slider {
-        --slide-width: clamp(320px, 75vw, 800px);
-        --slide-height: clamp(240px, 75vh, 600px);
+        --slide-width: clamp(820px, 80vw, 1000px);
+        --slide-height: clamp(440px, 80vh, 400px);
 
         display: grid;
         grid-auto-flow: column;
@@ -63,7 +63,7 @@
         bottom: 20px;
         left: 50%;
         transform: translateX(-50%);
-        gap: 15px;
+        gap: 25px;
         z-index: 1;
 
         display: flex;
