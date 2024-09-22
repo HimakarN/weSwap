@@ -79,9 +79,9 @@ DATABASES = {'default': {
     'ENGINE': 'django.db.backends.postgresql',
     'NAME': 'weswapdb',
     'USER': 'postgres',
-    'PASSWORD': 'N sskr@PG',
+    'PASSWORD': '1234',
     'HOST': 'localhost',
-    'PORT': '5433',
+    'PORT': '5432',
 }}
 
 

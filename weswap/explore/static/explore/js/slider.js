@@ -15,3 +15,10 @@
     }
 
     setInterval(autoSlide, 3000); // Slide every 3 seconds
+
+function scrollToSlide(slideNumber) {
+    const slide = document.querySelector(`#slide-${slideNumber}`);
+    if (slide) {
+        slide.scrollIntoView({ behavior: 'smooth' });
+    }
+}
