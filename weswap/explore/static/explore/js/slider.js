@@ -19,6 +19,10 @@
 function scrollToSlide(slideNumber) {
     const slide = document.querySelector(`#slide-${slideNumber}`);
     if (slide) {
-        slide.scrollIntoView({ behavior: 'smooth' });
+        slide.scrollIntoView({
+            behavior: 'smooth',
+            block: 'nearest',  // Adjust vertical alignment
+            inline: 'start'    // Adjust horizontal alignment, if necessary
+        });
     }
 }
