@@ -1,6 +1,9 @@
 /* Global Styles */
 body {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure the body takes at least the full viewport height */
+
     font-family: Tahoma, sans-serif;
     padding: 0;
     margin:0;
@@ -13,6 +16,7 @@ header {
     color: green;
     padding: 10px 0;
     text-align: center;
+    width: 100%;
 }
 
 .auth-links {
@@ -43,7 +47,10 @@ main {
     padding: 20px;
     text-align: center;
 }
-
+/* Main content area */
+.main-content {
+    flex-grow: 1; /* This allows the content to expand and take available space */
+}
 /* Image resizing */
 img {
     width: 100%;
@@ -97,12 +104,13 @@ img {
 footer {
     background-color: #333;
     color: white;
-    padding: 2px 0;
+    padding: 5px 0;
     text-align: center;
     width: 100%;
+
     display: flex;
     justify-content: center;
     align-items: center;
-}
 
+}
 
