@@ -7,24 +7,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WeSwap</title>
     <link rel="stylesheet" href="{% static 'explore/css/style.css' %}"><!-- Add any CSS styling here -->
+    <link rel="icon" type="image/png" href="{% static 'explore/img/sLogo.png' %}">
+
 </head>
 <body>
     <!-- Header Section -->
     <header>
         <div class="container">
-            <h1><a href="{% url 'home' %}">WeSwap</a></h1>
+            <a href="{% url 'home' %}">
+                <img src="{% static 'explore/img/weSwapLogo.png' %}" alt="WeSwap Logo" class="logo">
+            </a>
+
             <div class="auth-links">
                 {% if user.is_authenticated %}
                     <!-- Show Profile and Sign Out for authenticated users -->
-                    <a href="{% url 'profile' %}">Profile</a> |
                         <form method="post" action="{% url 'logout' %}">
                             {% csrf_token %}
-                            <button type="submit">Logout</button>
+                            <button class = "button neon" type="submit">Logout</button>
                         </form>
+                    <a href="{% url 'profile' %}" class = "button neon">Profile</a>
                 {% else %}
                     <!-- Show Login and Sign Up for guests -->
-                    <a href="{% url 'login' %}">Login </a>  |
-                    <a href="{% url 'signup' %}">Sign Up</a>
+                    <a href="{% url 'login' %}" class = "button neon">Login </a>
+                    <a href="{% url 'signup' %}" class = "button neon">Sign Up</a>
                 {% endif %}
             </div>
         </div>
