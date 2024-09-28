@@ -43,22 +43,6 @@ header {
     right: 15px;
 }
 
-.auth-links a, .auth-links button {
-    display: inline-block;
-    color: orange;
-    font-size: 13px;
-    margin-right: 5px;
-    text-decoration: none;
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
-}
-
-.auth-links a:hover, .auth-links button:hover {
-
-    color: #FF7F50;
-}
-
 /* Neon buttons */
 .button {
   width: 100px;
@@ -75,17 +59,22 @@ header {
 }
 
 .neon {
+  box-sizing: border-box;
   background-color: transparent;
-  border: 3px solid #FF7F50;
   border-radius: 50px;
-  -webkit-transition: all .15s ease-in-out;
   transition: all .15s ease-in-out;
-  color: #FF7F50;
+  color: orange;
+  font-size: 13px;
+  margin-right: 5px;
+  text-decoration: none;
+  border: 3px solid transparent;
 }
+
 .neon:hover {
   box-shadow: 0 0 20px 0 #FF7F50 inset, 0 0 20px 2px #FF7F50;
   border: 3px solid #FF7F50;
 }
+
 
 main {
     padding: 20px;
@@ -155,6 +144,5 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
 
